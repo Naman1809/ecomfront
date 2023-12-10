@@ -5,12 +5,13 @@ import { Typography } from "@mui/material";
 import { Link, useParams } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import { clearErrors, getOrderDetails, updateOrder } from "../../actions/orderAction";
-import { useAlert } from "react-alert";
+// import { useAlert } from "react-alert";
 import Loader from "../layout/Loader/Loader";
 import AccountTreeIcon from "@mui/icons-material/AccountTree"
 import { Button } from '@mui/material';
 import "./ProcessOrder.css"
 import { UPDATE_ORDER_RESET } from "../../constants/orderConstants";
+import toast from "react-hot-toast";
 
 const ProcessOrder = () => {
   const { order, error, loading } = useSelector((state) => state.orderDetails);
@@ -20,7 +21,7 @@ const ProcessOrder = () => {
 
   const { id } = useParams();
   const dispatch = useDispatch();
-  const alert = useAlert();
+  // const alert = useAlert();
   
   const updateOrderSubmitHandler = (e) => {
     e.preventDefault();
@@ -34,19 +35,19 @@ const ProcessOrder = () => {
 
   useEffect(() => {
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
     if (updateError) {
-        alert.error(updateError);
+        toast.error(updateError);
         dispatch(clearErrors());
       }
       if (isUpdated) {
-        alert.success("Order Updated Successfully");
+        toast.success("Order Updated Successfully");
         dispatch({type:UPDATE_ORDER_RESET});
       }
     dispatch(getOrderDetails(id));
-  }, [dispatch, alert, error, id,isUpdated,updateError]);
+  }, [dispatch, error, id,isUpdated,updateError]);
 
   return (
     <Fragment>

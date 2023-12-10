@@ -5,10 +5,11 @@ import Loader from "../layout/Loader/Loader";
 import ProductCard from "../Home/ProductCard";
 import "./Products.css";
 import { useParams } from "react-router-dom";
-import {useAlert} from "react-alert";
+// import {useAlert} from "react-alert";
 import Pagination from "react-js-pagination";
 import {Typography,Slider} from "@mui/material";
 import MetaData from "../layout/MetaData";
+import toast from "react-hot-toast";
 
 const categories = [
   "Laptop",
@@ -22,7 +23,7 @@ const categories = [
 
 const Products = () => {
   const dispatch = useDispatch();
-  const alert=useAlert();
+  // const alert=useAlert();
   const [currentPage, setCurrentPage] = useState(1);
   const [price, setPrice] = useState([0, 25000]);
   const [category, setCategory] = useState("");
@@ -50,11 +51,11 @@ const Products = () => {
 
   useEffect(() => {
     if(error){
-      alert.error(error)
+      toast.error(error)
       dispatch(clearErrors())
     }
     dispatch(getProduct(keyword, currentPage, price, category,ratings));
-  }, [dispatch, keyword, currentPage, price, category,ratings,alert,error]);
+  }, [dispatch, keyword, currentPage, price, category,ratings,error]);
 
   let count = filteredProductsCount;
 

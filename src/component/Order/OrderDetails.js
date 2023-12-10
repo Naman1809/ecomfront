@@ -1,26 +1,27 @@
 import React, { Fragment, useEffect } from "react";
 import "./OrderDetails.css";
 import { useDispatch, useSelector } from "react-redux";
-import { useAlert } from "react-alert";
+// import { useAlert } from "react-alert";
 import { clearErrors, getOrderDetails } from "../../actions/orderAction";
 import { Link, useParams } from "react-router-dom";
 import Loader from "../layout/Loader/Loader";
 import MetaData from "../layout/MetaData";
 import { Typography } from "@mui/material";
+import toast from "react-hot-toast";
 const OrderDetails = () => {
   const { order, error, loading } = useSelector((state) => state.orderDetails);
   const dispatch = useDispatch();
-  const alert = useAlert();
+  // const alert = useAlert();
 
   const { id } = useParams();
 
   useEffect(() => {
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
     dispatch(getOrderDetails(id));
-  }, [dispatch, alert, error, id]);
+  }, [dispatch, error, id]);
 
   return (
     <Fragment>

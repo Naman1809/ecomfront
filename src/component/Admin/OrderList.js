@@ -3,7 +3,7 @@ import "./ProductList.css"
 import { DataGrid } from '@mui/x-data-grid'
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { useAlert } from "react-alert";
+// import { useAlert } from "react-alert";
 import { Button } from '@mui/material';
 import MetaData from "../layout/MetaData";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -13,11 +13,12 @@ import EditIcon from "@mui/icons-material/Edit";
 import Sidebar from './Sidebar';
 import { DELETE_ORDER_RESET } from '../../constants/orderConstants';
 import { clearErrors, deleteOrder, getAllOrders } from '../../actions/orderAction';
+import toast from 'react-hot-toast';
 
 
 const OrderList = () => {
   const dispatch = useDispatch();
-  const alert = useAlert();
+  // const alert = useAlert();
   const navigate = useNavigate();
   const {error, orders} = useSelector((state)=>state.allOrders)
   const {error:deleteError, isDeleted} = useSelector((state)=>state.order)
@@ -30,20 +31,21 @@ const OrderList = () => {
 
     useEffect(()=>{
       if(error){
-        alert.error(error);
+
+        toast.error(error);
         dispatch(clearErrors());
       }
        if(deleteError){
-        alert.error(deleteError);
+        toast.error(deleteError);
         dispatch(clearErrors());
       }
       if(isDeleted){
-        alert.success("Order Deleted Successfully");
+        toast.success("Order Deleted Successfully");
         navigate("/admin/orders");
         dispatch({type:DELETE_ORDER_RESET});
       }
       dispatch(getAllOrders());
-    },[error,alert,dispatch,deleteError,navigate,isDeleted])
+    },[error,dispatch,deleteError,navigate,isDeleted])
 
 
 

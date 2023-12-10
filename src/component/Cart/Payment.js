@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useRef } from "react";
 import CheckoutSteps from "../Cart/CheckoutSteps";
 import { useSelector, useDispatch } from "react-redux";
 import MetaData from "../layout/MetaData";
-import { useAlert } from "react-alert";
+// import { useAlert } from "react-alert";
 import {
   CardNumberElement,
   CardCvcElement,
@@ -21,13 +21,14 @@ import VpnKeyIcon from "@mui/icons-material/VpnKey"
 import EventIcon from "@mui/icons-material/Event"
 
 import { createOrder, clearErrors } from "../../actions/orderAction";
+import toast from "react-hot-toast";
 
 const Payment = () => {
   const orderInfo = JSON.parse(sessionStorage.getItem("orderInfo"));
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const alert = useAlert();
+  // const alert = useAlert();
   const stripe = useStripe();
   const elements = useElements();
   const payBtn = useRef(null);
@@ -89,7 +90,7 @@ const Payment = () => {
 
       if (result.error) {
         payBtn.current.disabled = false;
-        alert.error(result.error.message);
+        toast.error(result.error.message);
       } else {
         if (result.paymentIntent.status === "succeeded") {
             order.paymentInfo={
@@ -100,21 +101,21 @@ const Payment = () => {
 
           navigate("/success");
         } else {
-          alert.error("There is some issue while processing payment");
+          toast.error("There is some issue while processing payment");
         }
       }
     } catch (error) {
       payBtn.current.disabled = false;
-      alert.error(error.response.data.message);
+      toast.error(error.response.data.message);
     }
   };
 
   useEffect(() => {
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
-  }, [dispatch, error, alert]);
+  }, [dispatch, error]);
 
   return (
     <Fragment>

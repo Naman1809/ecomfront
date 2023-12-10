@@ -4,12 +4,13 @@ import Loader from "../layout/Loader/Loader";
 import MailOutllineIcon from "@mui/icons-material/MailOutline"
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, forgotPassword } from "../../actions/userAction";
-import { useAlert } from "react-alert";
+// import { useAlert } from "react-alert";
 import MetaData from "../layout/MetaData";
+import toast from "react-hot-toast";
 
 const ForgotPassword = () => {
   const dispatch = useDispatch();
-  const alert = useAlert();
+  // const alert = useAlert();
 
   const { error, message, loading } = useSelector(
     (state) => state.forgotPassword
@@ -26,11 +27,11 @@ const ForgotPassword = () => {
 
   useEffect(() => {
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
     if (message) {
-      alert.success(message);
+      toast.success(message);
     }
   }, [alert, dispatch, error, message]);
 

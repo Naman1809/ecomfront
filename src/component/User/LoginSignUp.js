@@ -10,11 +10,12 @@ import FaceIcon from "@mui/icons-material/Face"
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, login, register } from "../../actions/userAction";
-import { useAlert } from "react-alert";
+// import { useAlert } from "react-alert";
+import toast from "react-hot-toast";
 
 const LoginSignUp = () => {
   const dispatch = useDispatch();
-  const alert = useAlert();
+  // const alert = useAlert();
   const loginTab = useRef(null);
   const registerTab = useRef(null);
   const switcherTab = useRef(null);
@@ -77,7 +78,7 @@ const LoginSignUp = () => {
   
   useEffect(() => {
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
     if (isAuthenticated) {
@@ -85,7 +86,7 @@ const LoginSignUp = () => {
 // console.log(location.search.split("=")[1]);
       navigate(redirect);
     }
-  }, [alert, dispatch, error, isAuthenticated, navigate,redirect]);
+  }, [ dispatch, error, isAuthenticated, navigate,redirect]);
 
   const switchTabs = (e, tab) => {
     if (tab === "login") {

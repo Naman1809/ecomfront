@@ -7,18 +7,19 @@ import {
   clearErrors,
   updatePassword,
 } from "../../actions/userAction";
-import { useAlert } from "react-alert";
+// import { useAlert } from "react-alert";
 import { UPDATE_PASSWORD_RESET } from "../../constants/userConstants";
 import MetaData from "../layout/MetaData";
 import LockOpenIcon from "@mui/icons-material/LockOpen"
 import LockIcon from "@mui/icons-material/Lock"
 import VpnKeyIcon from "@mui/icons-material/VpnKey"
+import toast from "react-hot-toast";
 
 
 
 const UpdatePassword = () => {
   const dispatch = useDispatch();
-  const alert = useAlert();
+  // const alert = useAlert();
 
   const { error, isUpdated, loading } = useSelector((state) => state.profile);
   const navigate = useNavigate();
@@ -43,17 +44,17 @@ const UpdatePassword = () => {
      
 
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
     if (isUpdated) {
-      alert.success("Profile Updated Successfully");
+      toast.success("Profile Updated Successfully");
       navigate("/account");
       dispatch({
         type: UPDATE_PASSWORD_RESET,
       });
     }
-  }, [alert, dispatch, error, navigate, isUpdated]);
+  }, [ dispatch, error, navigate, isUpdated]);
   return (
     <Fragment>
       {loading ? (

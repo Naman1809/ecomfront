@@ -8,7 +8,7 @@ import {
   deleteReviews,
 } from "../../actions/productAction";
 import { useNavigate } from "react-router-dom";
-import { useAlert } from "react-alert";
+// import { useAlert } from "react-alert";
 import { Button } from '@mui/material';
 import DeleteIcon from "@mui/icons-material/Delete";
 import StarIcon from "@mui/icons-material/Star";
@@ -17,9 +17,10 @@ import MetaData from "../layout/MetaData";
 
 import Sidebar from './Sidebar';
 import { DELETE_REVIEW_RESET } from '../../constants/productConstants';
+import toast from 'react-hot-toast';
 const ProductReviews = () => {
   const dispatch = useDispatch();
-  const alert = useAlert();
+  // const alert = useAlert();
   const navigate = useNavigate();
   const {error, reviews,loading} = useSelector((state)=>state.productReviews)
   const {error:deleteError, isDeleted} = useSelector((state)=>state.review)
@@ -42,20 +43,20 @@ const ProductReviews = () => {
          
       }
       if(error){
-        alert.error(error);
+        toast.error(error);
         dispatch(clearErrors());
       }
       if(deleteError){
-        alert.error(deleteError);
+        toast.error(deleteError);
         dispatch(clearErrors());
       }
       if(isDeleted){
-        alert.success("Review Deleted Successfully");
+        toast.success("Review Deleted Successfully");
         navigate("/admin/reviews");
         dispatch({type:DELETE_REVIEW_RESET});
       }
 
-     },[error,alert,dispatch,deleteError,navigate,isDeleted,productId])
+     },[error,dispatch,deleteError,navigate,isDeleted,productId])
 
 
 

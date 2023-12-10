@@ -1,6 +1,6 @@
 import React, { useEffect, Fragment, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useAlert } from "react-alert";
+// import { useAlert } from "react-alert";
 import { Button } from '@mui/material';
 import MailOutlineIcon from "@mui/icons-material/MailOutline"
 import VerifiedUserIcon from "@mui/icons-material/MailOutline"
@@ -16,10 +16,11 @@ import {
   clearErrors,
 } from "../../actions/userAction";
 import Loader from "../layout/Loader/Loader";
+import toast from "react-hot-toast";
 
 const UpdateUser = () => {
   const dispatch = useDispatch();
-  const alert = useAlert();
+  // const alert = useAlert();
   const navigate = useNavigate();
   const { id } = useParams();
   console.log(id);
@@ -43,19 +44,19 @@ const UpdateUser = () => {
       setRole(user.role);
     }
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
     if (updateError) {
-      alert.error(updateError);
+      toast.error(updateError);
       dispatch(clearErrors());
     }
     if (isUpdated) {
-      alert.success("User Updated Successfully");
+      toast.success("User Updated Successfully");
       navigate("/admin/users");
       dispatch({ type: UPDATE_USER_RESET });
     }
-  }, [dispatch, alert, error, navigate, id, isUpdated, updateError, user]);
+  }, [dispatch, error, navigate, id, isUpdated, updateError, user]);
 
   const updateUserSubmitHandler = (e) => {
     e.preventDefault();

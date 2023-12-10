@@ -11,7 +11,7 @@ import {
 import ReviewCard from "./ReviewCard.js";
 import { useParams } from "react-router-dom";
 import Loader from "../layout/Loader/Loader";
-import { useAlert } from "react-alert";
+// import { useAlert } from "react-alert";
 import MetaData from "../layout/MetaData";
 import { Carousel } from "react-responsive-carousel";
 import { addItemsToCart } from "../../actions/cartAction";
@@ -25,9 +25,10 @@ import {
 } from "@mui/material";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { NEW_REVIEW_RESET } from "../../constants/productConstants";
+import toast from "react-hot-toast";
 const ProductDetails = () => {
   const dispatch = useDispatch();
-  const alert = useAlert();
+  // const alert = useAlert();
   const { product, loading, error } = useSelector(
     (state) => state.productDetails
   );
@@ -40,20 +41,20 @@ const ProductDetails = () => {
 
   useEffect(() => {
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
     if (reviewError) {
-      alert.error(reviewError);
+      toast.error(reviewError);
       dispatch(clearErrors());
     }
     if (success) {
-      alert.success("Review Submitted Successfully");
+      toast.success("Review Submitted Successfully");
       dispatch({ type: NEW_REVIEW_RESET });
     }
 
     dispatch(getProductDetails(id));
-  }, [dispatch, id, error, alert, reviewError, success]);
+  }, [dispatch, id, error, reviewError, success]);
 
   const options = {
     size: "large",
@@ -80,7 +81,7 @@ const ProductDetails = () => {
 
   const addToCartHandler = () => {
     dispatch(addItemsToCart(id, quantity));
-    alert.success("Items Added in Cart");
+    toast.success("Items Added in Cart");
   };
   const submitReviewToggle = () => {
     open ? setOpen(false) : setOpen(true);

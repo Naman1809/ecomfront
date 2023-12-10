@@ -12,14 +12,15 @@ import TransferWithinAStationIcon from "@mui/icons-material/TransferWithinAStati
 
 import { Country, State } from "country-state-city";
 import { useDispatch, useSelector } from "react-redux";
-import { useAlert } from "react-alert";
+// import { useAlert } from "react-alert";
 import CheckoutSteps from "./CheckoutSteps";
 //
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const Shipping = () => {
   const dispatch = useDispatch();
-  const alert = useAlert();
+  // const alert = useAlert();
   const navigate = useNavigate();
 
   const { shippingInfo } = useSelector((state) => state.cart);
@@ -33,7 +34,7 @@ const Shipping = () => {
   const shippingSubmit = (e) => {
     e.preventDefault();
     if (phoneNo.length < 10 || phoneNo.length > 10) {
-      alert.error("Phone number should be of 10 digits");
+      toast.error("Phone number should be of 10 digits");
       return;
     }
     dispatch(

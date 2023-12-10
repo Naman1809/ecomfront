@@ -9,15 +9,16 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"
 
 
 import { useNavigate } from "react-router-dom";
-import { useAlert } from "react-alert";
+// import { useAlert } from "react-alert";
 import { logout } from "../../../actions/userAction";
 import { useDispatch, useSelector } from "react-redux";
+import toast from "react-hot-toast";
 
 const UserOptions = ({ user }) => {
   const { cartItems } = useSelector((state) => state.cart);
 
   const [open, setOpen] = useState(false);
-  const alert = useAlert();
+  // const alert = useAlert();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const options = [
@@ -58,7 +59,7 @@ const UserOptions = ({ user }) => {
 
   function logoutUser() {
     dispatch(logout());
-    alert.success("Logout Successfully");
+    toast.success("Logout Successfully");
   }
 
   return (

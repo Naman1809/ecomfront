@@ -5,14 +5,15 @@ import {useDispatch, useSelector } from "react-redux";
 import { clearErrors, myOrders } from "../../actions/orderAction";
 import Loader from "../layout/Loader/Loader";
 import { Link,} from "react-router-dom";
-import { useAlert } from "react-alert";
+// import { useAlert } from "react-alert";
 import { Typography  } from '@mui/material';
 import LaunchIcon from "@mui/icons-material/Launch"
 
 import MetaData from "../layout/MetaData";
+import toast from "react-hot-toast";
 const MyOrders = () => {
   const dispatch = useDispatch();
-  const alert = useAlert();
+  // const alert = useAlert();
   const { loading, error, orders } = useSelector((state) => state.myOrders);
   const { user } = useSelector((state) => state.user);
 
@@ -77,11 +78,11 @@ const MyOrders = () => {
 
   useEffect(() => {
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
     dispatch(myOrders());
-  }, [dispatch, error, alert]);
+  }, [dispatch, error]);
 
   return (
     <Fragment>

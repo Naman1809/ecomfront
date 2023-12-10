@@ -4,7 +4,7 @@ import Loader from "../layout/Loader/Loader";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, resetPassword } from "../../actions/userAction";
-import { useAlert } from "react-alert";
+// import { useAlert } from "react-alert";
 import MetaData from "../layout/MetaData";
 
 import LockOpenIcon from "@mui/icons-material/LockOpen"
@@ -12,11 +12,12 @@ import LockIcon from "@mui/icons-material/Lock"
 
 
 import { useParams } from "react-router-dom";
+import toast from "react-hot-toast";
 
 
 const ResetPassword = () => {
   const dispatch = useDispatch();
-  const alert = useAlert();
+  // const alert = useAlert();
 
   const { error, success, loading } = useSelector(
     (state) => state.forgotPassword
@@ -38,14 +39,14 @@ const ResetPassword = () => {
 
   useEffect(() => {
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
     if (success) {
-      alert.success("Password Updated Successfully");
+      toast.success("Password Updated Successfully");
       navigate("/login");
     }
-  }, [alert, dispatch, error, navigate, success]);
+  }, [ dispatch, error, navigate, success]);
   return (
     <Fragment>
       {loading ? (

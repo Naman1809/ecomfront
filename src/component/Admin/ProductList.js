@@ -8,7 +8,7 @@ import {
   getAdminProduct,
 } from "../../actions/productAction";
 import { Link, useNavigate } from "react-router-dom";
-import { useAlert } from "react-alert";
+// import { useAlert } from "react-alert";
 import { Button } from '@mui/material';
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
@@ -17,9 +17,10 @@ import MetaData from "../layout/MetaData";
 
 import Sidebar from './Sidebar';
 import { DELETE_PRODUCT_RESET } from '../../constants/productConstants';
+import toast from 'react-hot-toast';
 const ProductList = () => {
   const dispatch = useDispatch();
-  const alert = useAlert();
+  // const alert = useAlert();
   const navigate = useNavigate();
   const {error, products} = useSelector((state)=>state.products)
   const {error:deleteError, isDeleted} = useSelector((state)=>state.product)
@@ -32,20 +33,20 @@ const ProductList = () => {
 
     useEffect(()=>{
       if(error){
-        alert.error(error);
+        toast.error(error);
         dispatch(clearErrors());
       }
       if(deleteError){
-        alert.error(deleteError);
+        toast.error(deleteError);
         dispatch(clearErrors());
       }
       if(isDeleted){
-        alert.success("Product Deleted Successfully");
+        toast.success("Product Deleted Successfully");
         navigate("/admin/dashboard");
         dispatch({type:DELETE_PRODUCT_RESET});
       }
       dispatch(getAdminProduct());
-    },[error,alert,dispatch,deleteError,navigate,isDeleted])
+    },[error,dispatch,deleteError,navigate,isDeleted])
 
 
 
