@@ -1,5 +1,5 @@
-// import axios from "../axios.config";
-import axios from "axios";
+import axios from "../axios.config";
+// import axios from "axios";
 import {
   ADD_TO_CART,
   REMOVE_CART_ITEM,

@@ -33,7 +33,7 @@ const ForgotPassword = () => {
     if (message) {
       toast.success(message);
     }
-  }, [alert, dispatch, error, message]);
+  }, [dispatch, error, message]);
 
   return (
     <Fragment>

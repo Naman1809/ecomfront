@@ -1,5 +1,5 @@
-// import axios from "../axios.config";
-import axios from "axios";
+import axios from "../axios.config";
+// import axios from "axios";
 
 import {
   ALL_PRODUCT_FAIL,

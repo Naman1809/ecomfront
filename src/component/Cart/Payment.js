@@ -11,7 +11,8 @@ import {
   useElements,
 } from "@stripe/react-stripe-js";
 import "./Payment.css";
-import axios from "axios";
+// import axios from "axios";
+import axios from "../../axios.config"
 
 import { useNavigate } from "react-router-dom";
 
