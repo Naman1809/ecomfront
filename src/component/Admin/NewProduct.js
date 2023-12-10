@@ -44,7 +44,6 @@ const NewProduct = () => {
       toast.error(error)
     }
     if (success) {
-      // alert.success("Product Created Successfully");
       navigate("/admin/dashboard");
       dispatch({ type: NEW_PRODUCT_RESET });
       toast.success("Product Created")

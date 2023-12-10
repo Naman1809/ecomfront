@@ -4,7 +4,7 @@ import { DataGrid } from '@mui/x-data-grid'
 import { useSelector, useDispatch } from "react-redux";
 
 import { Link, useNavigate } from "react-router-dom";
-import { useAlert } from "react-alert";
+// import { useAlert } from "react-alert";
 import { Button } from '@mui/material';
 import EditIcon from "@mui/icons-material/Edit"
 import DeleteIcon from "@mui/icons-material/Delete"
@@ -15,9 +15,10 @@ import MetaData from "../layout/MetaData";
 import Sidebar from './Sidebar';
 import { getAllUsers,clearErrors, deleteUser } from '../../actions/userAction';
 import { DELETE_USER_RESET } from '../../constants/userConstants';
+import toast from 'react-hot-toast';
 const UsersList = () => {
   const dispatch = useDispatch();
-  const alert = useAlert();
+  // const alert = useAlert();
   const navigate = useNavigate();
   const {error, users} = useSelector((state)=>state.allUsers)
   const {error:deleteError, isDeleted,message} = useSelector((state)=>state.profile)    
@@ -29,20 +30,20 @@ const UsersList = () => {
 
     useEffect(()=>{
       if(error){
-        alert.error(error);
+        toast.error(error);
         dispatch(clearErrors());
       }
       if(deleteError){
-        alert.error(deleteError);
+        toast.error(deleteError);
         dispatch(clearErrors());
       }
       if(isDeleted){
-        alert.success(message);
+        toast.success(message);
         navigate("/admin/users");
         dispatch({type:DELETE_USER_RESET});
       }
       dispatch(getAllUsers());
-    },[error,alert,dispatch,deleteError,navigate,isDeleted,message])
+    },[error,dispatch,deleteError,navigate,isDeleted,message])
 
 
 
