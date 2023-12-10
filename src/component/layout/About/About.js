@@ -1,8 +1,10 @@
 import React from "react";
 import "./About.css";
-import { Button, Typography, Avatar } from "@material-ui/core";
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import InstagramIcon from "@material-ui/icons/Instagram";
+import LinkedInIcon from "@mui/icons-material/LinkedIn"
+import InstagramIcon from "@mui/icons-material/Instagram"
+
+import { Button, Typography, Avatar } from "@mui/material";
+
 const About = () => {
   const visitInstagram = () => {
     window.location = "https://www.instagram.com/coolest_naman";

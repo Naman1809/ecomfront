@@ -9,10 +9,12 @@ import {
 } from "../../actions/productAction";
 import { useNavigate } from "react-router-dom";
 import { useAlert } from "react-alert";
-import { Button } from "@material-ui/core";
+import { Button } from '@mui/material';
+import DeleteIcon from "@mui/icons-material/Delete";
+import StarIcon from "@mui/icons-material/Star";
+
 import MetaData from "../layout/MetaData";
-import Star from "@material-ui/icons/Star"
-import DeleteIcon from "@material-ui/icons/Delete";
+
 import Sidebar from './Sidebar';
 import { DELETE_REVIEW_RESET } from '../../constants/productConstants';
 const ProductReviews = () => {
@@ -129,7 +131,7 @@ const ProductReviews = () => {
             >
               <h1 className='productReviewsFormHeading'>ALL REVIEWS</h1>
               <div>
-                <Star />
+                <StarIcon />
                 <input
                   type="text"
                   placeholder="Product Id"

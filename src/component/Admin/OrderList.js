@@ -4,10 +4,12 @@ import { DataGrid } from '@mui/x-data-grid'
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { useAlert } from "react-alert";
-import { Button } from "@material-ui/core";
+import { Button } from '@mui/material';
 import MetaData from "../layout/MetaData";
-import EditIcon from "@material-ui/icons/Edit";
-import DeleteIcon from "@material-ui/icons/Delete";
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
+
+
 import Sidebar from './Sidebar';
 import { DELETE_ORDER_RESET } from '../../constants/orderConstants';
 import { clearErrors, deleteOrder, getAllOrders } from '../../actions/orderAction';

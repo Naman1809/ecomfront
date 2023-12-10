@@ -2,8 +2,8 @@ import React, { Fragment } from "react";
 import "./ConfirmOrder.css";
 import { useSelector } from "react-redux";
 import MetaData from "../layout/MetaData";
-import CheckoutSteps from "./CheckoutSteps";
-import { Typography } from "@material-ui/core";
+import {Typography  } from '@mui/material';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { Link, useNavigate } from "react-router-dom";
 
 const ConfirmOrder = () => {
@@ -39,7 +39,7 @@ const navigate = useNavigate();
   return (
     <Fragment>
       <MetaData title="Confirm Order" />
-      <CheckoutSteps activeStep={1} />
+      <AddShoppingCartIcon activeStep={1} />
       <div className="confirmOrderPage">
         <div>
           <div className="confirmshippingArea">

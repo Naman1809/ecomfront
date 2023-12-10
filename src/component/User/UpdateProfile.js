@@ -1,8 +1,9 @@
 import React, { Fragment, useState, useEffect } from "react";
 import "./UpdateProfile.css";
 import Loader from "../layout/Loader/Loader";
-import MailOutllineIcon from "@material-ui/icons/MailOutline";
-import FaceIcon from "@material-ui/icons/Face";
+import MailOutllineIcon from "@mui/icons-material/MailOutline"
+import FaceIcon from "@mui/icons-material/Face"
+
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, loadUser, updateProfile } from "../../actions/userAction";

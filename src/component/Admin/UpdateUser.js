@@ -1,11 +1,11 @@
 import React, { useEffect, Fragment, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useAlert } from "react-alert";
-import { Button } from "@material-ui/core";
+import { Button } from '@mui/material';
+import MailOutlineIcon from "@mui/icons-material/MailOutline"
+import VerifiedUserIcon from "@mui/icons-material/MailOutline"
+import PersonIcon from "@mui/icons-material/Person"
 import MetaData from "../layout/MetaData";
-import MailOutlineIcon from "@material-ui/icons/MailOutline";
-import Person from "@material-ui/icons/Person";
-import VerifiedUserIcon from "@material-ui/icons/VerifiedUser";
 import Sidebar from "./Sidebar";
 import "./NewProduct.css";
 import { useNavigate, useParams } from "react-router-dom";
@@ -83,7 +83,7 @@ const UpdateUser = () => {
             >
               <h1>Update User</h1>
               <div>
-                <Person />
+                <PersonIcon />
                 <input
                   type="text"
                   placeholder="Name"

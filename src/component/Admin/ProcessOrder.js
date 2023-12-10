@@ -1,14 +1,14 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import MetaData from "../layout/MetaData";
-import { Typography } from "@material-ui/core";
+import { Typography } from "@mui/material";
 import { Link, useParams } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import { clearErrors, getOrderDetails, updateOrder } from "../../actions/orderAction";
 import { useAlert } from "react-alert";
 import Loader from "../layout/Loader/Loader";
-import AccountTreeIcon from "@material-ui/icons/AccountTree";
-import { Button } from "@material-ui/core";
+import AccountTreeIcon from "@mui/icons-material/AccountTree"
+import { Button } from '@mui/material';
 import "./ProcessOrder.css"
 import { UPDATE_ORDER_RESET } from "../../constants/orderConstants";
 

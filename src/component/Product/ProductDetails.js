@@ -21,9 +21,9 @@ import {
   DialogContent,
   DialogTitle,
   Button,
-} from "@material-ui/core";
+  Rating
+} from "@mui/material";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Rating } from "@mui/material";
 import { NEW_REVIEW_RESET } from "../../constants/productConstants";
 const ProductDetails = () => {
   const dispatch = useDispatch();

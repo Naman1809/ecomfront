@@ -5,10 +5,14 @@ import {
   Stepper,
   Typography,
   Step,
-} from "@material-ui/core";
-import LocalShippingIcon from "@material-ui/icons/LocalShipping";
-import LibraryAddCheckIcon from "@mui/icons-material/LibraryAddCheck";
-import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
+} from "@mui/material";
+
+import LocalShippingIcon from "@mui/icons-material/LocalShipping"
+import LibraryAddCheckIcon from "@mui/icons-material/LibraryAddCheck"
+import AccountBalanceIcon from "@mui/icons-material/AccountBalance"
+
+
+
 
 const CheckoutSteps = ({ activeStep }) => {
   const steps = [

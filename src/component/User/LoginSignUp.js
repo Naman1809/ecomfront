@@ -2,9 +2,11 @@ import React, { Fragment, useRef, useState, useEffect } from "react";
 import "./LoginSignUp.css";
 import Loader from "../layout/Loader/Loader";
 import { Link, useLocation } from "react-router-dom";
-import MailOutllineIcon from "@material-ui/icons/MailOutline";
-import LockOpenIcon from "@material-ui/icons/LockOpen";
-import FaceIcon from "@material-ui/icons/Face";
+import LockOpenIcon from "@mui/icons-material/LockOpen"
+import MailOutlineIcon from "@mui/icons-material/MailOutline" 
+import FaceIcon from "@mui/icons-material/Face" 
+
+
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, login, register } from "../../actions/userAction";
@@ -119,7 +121,7 @@ const LoginSignUp = () => {
               </div>
               <form className="loginForm" ref={loginTab} onSubmit={loginSubmit}>
                 <div className="loginEmail">
-                  <MailOutllineIcon />
+                  <MailOutlineIcon />
                   <input
                     type="email"
                     placeholder="Email"
@@ -159,7 +161,7 @@ const LoginSignUp = () => {
                   />
                 </div>
                 <div className="signUpEmail">
-                  <MailOutllineIcon />
+                  <MailOutlineIcon />
                   <input
                     type="email"
                     placeholder="Email"

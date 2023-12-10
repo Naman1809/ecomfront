@@ -7,8 +7,7 @@ import "./Products.css";
 import { useParams } from "react-router-dom";
 import {useAlert} from "react-alert";
 import Pagination from "react-js-pagination";
-import Slider from "@material-ui/core/Slider";
-import Typography from "@mui/material/Typography";
+import {Typography,Slider} from "@mui/material";
 import MetaData from "../layout/MetaData";
 
 const categories = [
