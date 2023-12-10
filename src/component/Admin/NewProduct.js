@@ -17,7 +17,6 @@ import { useNavigate } from "react-router-dom";
 
 const NewProduct = () => {
   const dispatch = useDispatch();
-  // const alert = useAlert();
   const navigate = useNavigate();
 
   const { loading, error, success } = useSelector((state) => state.newProduct);

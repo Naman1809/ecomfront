@@ -5,7 +5,7 @@ import {
   clearErrors,
   updateProduct,
 } from "../../actions/productAction";
-import { useAlert } from "react-alert";
+// import { useAlert } from "react-alert";
 import { Button } from '@mui/material';
 import AccountTreeIcon from "@mui/icons-material/AccountTree"
 import DescriptionIcon from "@mui/icons-material/Description"
@@ -19,10 +19,11 @@ import MetaData from "../layout/MetaData";
 import Sidebar from "./Sidebar";
 import { UPDATE_PRODUCT_RESET } from "../../constants/productConstants";
 import { useNavigate, useParams } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const UpdateProduct = () => {
   const dispatch = useDispatch();
-  const alert = useAlert();
+  // const alert = useAlert();
   const navigate = useNavigate();
   const { id } = useParams();
   const {
@@ -64,21 +65,21 @@ const UpdateProduct = () => {
     }
 
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
 
     if (updateError) {
-      alert.error(updateError);
+      toast.error(updateError);
       dispatch(clearErrors());
     }
 
     if (isUpdated) {
-      alert.success("Product Updated Successfully");
+      toast.success("Product Updated Successfully");
       navigate("/admin/products");
       dispatch({ type: UPDATE_PRODUCT_RESET });
     }
-  }, [dispatch, alert, error, navigate, isUpdated, id, product, updateError]);
+  }, [dispatch, error, navigate, isUpdated, id, product, updateError]);
 
   const updateProductSubmitHandler = (e) => {
     e.preventDefault();

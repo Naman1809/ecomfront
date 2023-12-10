@@ -3,7 +3,6 @@ import "./ProductList.css"
 import { DataGrid } from '@mui/x-data-grid'
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-// import { useAlert } from "react-alert";
 import { Button } from '@mui/material';
 import MetaData from "../layout/MetaData";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -18,7 +17,6 @@ import toast from 'react-hot-toast';
 
 const OrderList = () => {
   const dispatch = useDispatch();
-  // const alert = useAlert();
   const navigate = useNavigate();
   const {error, orders} = useSelector((state)=>state.allOrders)
   const {error:deleteError, isDeleted} = useSelector((state)=>state.order)

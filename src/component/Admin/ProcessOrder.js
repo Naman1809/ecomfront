@@ -5,7 +5,6 @@ import { Typography } from "@mui/material";
 import { Link, useParams } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import { clearErrors, getOrderDetails, updateOrder } from "../../actions/orderAction";
-// import { useAlert } from "react-alert";
 import Loader from "../layout/Loader/Loader";
 import AccountTreeIcon from "@mui/icons-material/AccountTree"
 import { Button } from '@mui/material';
@@ -21,7 +20,6 @@ const ProcessOrder = () => {
 
   const { id } = useParams();
   const dispatch = useDispatch();
-  // const alert = useAlert();
   
   const updateOrderSubmitHandler = (e) => {
     e.preventDefault();
